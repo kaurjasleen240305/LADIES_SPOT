@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITENARARY SCREEN</title>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Font  -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<style>
+  body::before{
+        width: 100%;
+      content:"";
+       position:absolute;
+        height: 100%;
+       opacity:0.7;
+     
+       z-index: -1;
+  
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* Background image is fixed in the viewport so that it doesn't move when 
+    the content's height is greater than the image's height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based
+    on the container's size */
+    background-size: cover;
+
+    /* Set a background color that will be displayed
+    while the background image is loading */
+    background-image:url('images/ki2.jpg') ;
+    overflow: hidden;
+    
+      }
+    .nav-link{
+      color:white
+    }
+.box{
+    display: flex;
+    flex-direction: row;
+}
+.sbox{
+    display:block;
+    padding:30px;
+    margin:5px;
+}
+.header{
+    display:block;
+    padding:2px;
+    margin:5px;
+}
+</style>
+<body>
+     <!-- navbar  -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">FINAL DECISIONS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="/logout">LOGOUT</a>
+          </li>
+        </ul>
+      </div>
+      </div>
+      </nav>
+    
+           <h1>VENUE OF THE KITTY: <%=arr[0]%></h1>
+           <div class="sbox">
+           <div class="header"><h2>DATE OF KITTY:<%=dates[0].date%>-<%=dates[0].month%>-<%=dates[0].year%></h2>
+            </div>
+            <h3>EVENTS</h3>
+            <ul>
+            <%for(let i=0;i<(dates[0].events.length);i++){%>
+             <h4><li><%=(dates[0].events)[i]%></li></h4>
+              <%}%>
+            </ul>
+            <a href="/event" class="nav-link">ADD EVENT</a>
+        </div>
+        <h3>
+          GAMES
+          <small  class="text-muted">Can Be Played</small>
+        </h3>
+              <h3 align="center"><a href="/requi" class="nav-link">ADD GAMES</a></h3>
+              <ul>
+        <%events.forEach(element=>{%>
+            <h4><li><%=element.requisite%></li></h4>
+        <%})%>
+        </ul>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Font  -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap" rel="stylesheet">
+  <!-- Bootstrap CDN  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <title>Authentications</title>
+  <style>
+    body{
+      font-family: 'Recursive', sans-serif;
+      font-size: larger;
+    
+    }
+    .customborder {
+      border-radius: 2%;
+      border: 2px solid #E95420;
+    }
+    .kittys{
+    display: flex;
+    flex-direction: row;
+}
+.kitty{
+    display:block;
+    background-color: darkgray;
+    border:2px solid black;
+    border-radius: 5px;
+    padding:30px;
+    margin:5px;
+}
+
+#header{
+    display:block;
+    padding:5px;
+    margin:5px;
+}
+body::before{
+        width: 100%;
+      content:"";
+       position:absolute;
+        height: 100%;
+       opacity:0.7;
+     
+       z-index: -1;
+  
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+
+    /* Background image is fixed in the viewport so that it doesn't move when 
+    the content's height is greater than the image's height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based
+    on the container's size */
+    background-size: cover;
+
+    /* Set a background color that will be displayed
+    while the background image is loading */
+    background-image:url('images/2.jpg') ;
+    overflow: hidden;
+    
+      }
+
+      .customborder{
+        background-color:bisque;
+      }
+  </style>
+ <!-- <script type="text/javascript" src="/public/javascript/getid.js"></script> -->
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+let tripid;
+function getID(x){
+kittyid=x
+console.log(x)
+postID()
+}
+function postID(){
+axios
+.get("/planning", {
+  kittyid: `$kittyid`,
+})
+.then((res)=>{
+  window.location.href="http://localhost:2378/planning"
+})
+}
+
+</script>
+
+</head>
+
+<body>
+
+  <!-- navbar  -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">DASHBOARD</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/profile">PROFILE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/logout">LOGOUT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- navbar end  -->
+                   <h1 class="text-center p-3">YOU ARE PART OF FOLLOWING KITTIES</h1>
+                      <div class="kittys">
+                        <%kittys.forEach(element=>{%>
+                          <div class="kitty">
+                            
+                            <h3><%=element.kittyname%></h3>
+                          </div> 
+                        <%})%>
+                        </div>
+                        <div class="container">
+                          <h1 class="text-center p-3">SEE THE PLANNING SCREEN</h1>
+                          <div
+                            style="margin: 0 auto"
+                            class="col-12 col-md-6 col-lg-5 p-5 customborder"
+                          >
+                         <form action="/dashboard" , method="POST">
+                          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                          
+                          <div class="mb-3">
+                            <label for="kittyname">Enter Kittyname</label>
+                            <input type="text" class="form-control form-control-lg" name="kittyname" id="kittyname"
+                                autocomplete="off" placeholder="Enter kitty you wanna plan">
+                        </div>
+                        <div class="d-grid gap-3 mb-3">
+                          <input type="submit" class="btn btn-lg btn-outline-primary" value="PLANNING SCREEN">
+                      </div>
+                      </form>
+                      </div>
+                      <br><br><br>
+                      
+                       <h3 align="center"><a class="card-link" href="/kitty">PLAN A KITTY</a></h3>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous">
+  </script>
+ 
+
+</body>
+
+</html>
